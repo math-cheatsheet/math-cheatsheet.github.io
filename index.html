@@ -1,1044 +1,972 @@
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html lang="en">
 <head>
-  <meta content='width=device-width, initial-scale=1' name='viewport'/>
-  <title><data:view.title.escaped/></title>
-  <b:include data='blog' name='all-head-content'/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math-Cheatsheet · History & Legends</title>
 
-  <!-- Fonts & KaTeX CSS -->
-  <link href='https://fonts.googleapis.com' rel='preconnect'/>
-  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
-  <link href='https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
-  <link href='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css' rel='stylesheet'/>
+    <!-- Google Fonts: Playfair Display (serif) + Source Sans 3 (sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <script type='text/javascript'>
-  //<![CDATA[
-  !function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_rlLL5a9WxKFr1W");whop.track("page");
-  //]]>
-  </script>
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <b:skin><![CDATA[
-  /* Reset and Hide Blogger default chrome */
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #050507;
-    color: #f5f5f7;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-  }
-  .hidden-section, #navbar-iframe, .navbar, .header, #header, .footer, #footer, .feed-links, .widget, .section {
-    display: none !important;
-    visibility: hidden !important;
-  }
+    <style>
+        /* ============================================================
+           DESIGN TOKENS
+           ============================================================ */
+        :root {
+            --navy-950: #070b1a;
+            --navy-900: #0b1129;
+            --navy-800: #111b3d;
+            --navy-700: #19264f;
+            --gold-500: #d4af37;
+            --gold-400: #e0c25a;
+            --gold-300: #ecd98c;
+            --gold-200: #f5ebbf;
+            --cream: #f5f1e8;
+            --text-primary: #f1ecdf;
+            --text-secondary: #b8b3a6;
+            --border-subtle: rgba(212, 175, 55, 0.18);
+            --border-medium: rgba(212, 175, 55, 0.35);
+            --shadow-card: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+            --font-display: "Playfair Display", Georgia, serif;
+            --font-body: "Source Sans 3", -apple-system, sans-serif;
+        }
 
-  /* ===== PREMIUM MATH CHEATSHEET ===== */
-  #tmc-app, #tmc-app * { box-sizing: border-box; }
-  #tmc-app {
-    --bg: #050507;
-    --surface: #0e0e11;
-    --surface-2: #16161b;
-    --line: rgba(255, 255, 255, 0.09);
-    --line-hover: rgba(110, 190, 255, 0.45);
-    --text: #f5f5f7;
-    --muted: #9898a3;
-    --blue: #2997ff;
-    --max: 1160px;
-    color: var(--text);
-    background: var(--bg);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.55;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  #tmc-app a { color: inherit; text-decoration: none; }
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  /* STICKY GLASS NAV */
-  #tmc-app .tmc-nav-wrap {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(5, 5, 7, 0.78);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--line);
-  }
-  #tmc-app .tmc-nav {
-    max-width: var(--max);
-    height: 68px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  #tmc-app .tmc-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-  }
-  #tmc-app .tmc-logo {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #ffffff 0%, #8ecaff 100%);
-    color: #050507;
-    font-weight: 800;
-    font-size: 18px;
-    box-shadow: 0 4px 20px rgba(41, 151, 255, 0.25);
-  }
-  #tmc-app .tmc-nav-links {
-    display: flex;
-    gap: 26px;
-    color: var(--muted);
-    font-size: 13.5px;
-    font-weight: 500;
-  }
-  #tmc-app .tmc-nav-links a { transition: color 0.2s ease; }
-  #tmc-app .tmc-nav-links a:hover { color: #fff; }
-  #tmc-app .tmc-nav-cta {
-    background: #fff;
-    color: #050507;
-    border-radius: 999px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 700;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  #tmc-app .tmc-nav-cta:hover { transform: translateY(-1px); opacity: 0.92; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-  /* HERO */
-  #tmc-app .tmc-hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    isolation: isolate;
-    padding: 96px 24px 72px;
-  }
-  #tmc-app .tmc-orb {
-    position: absolute;
-    z-index: -1;
-    border-radius: 50%;
-    filter: blur(110px);
-    opacity: 0.26;
-    pointer-events: none;
-  }
-  #tmc-app .tmc-orb.one {
-    width: 680px;
-    height: 480px;
-    background: #1472e6;
-    top: -220px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  #tmc-app .tmc-orb.two {
-    width: 420px;
-    height: 420px;
-    background: #6d28d9;
-    bottom: -120px;
-    right: 8%;
-  }
-  #tmc-app .tmc-hero-inner {
-    width: 100%;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-  #tmc-app .tmc-eyebrow {
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-    padding: 6px 14px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.04);
-    color: #d1d1d6;
-    font-size: 11.5px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  #tmc-app .tmc-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #2997ff;
-    box-shadow: 0 0 14px #2997ff;
-  }
-  #tmc-app h1 {
-    font-size: clamp(42px, 7vw, 82px);
-    line-height: 1.02;
-    letter-spacing: -0.05em;
-    margin: 24px 0 22px;
-    font-weight: 800;
-  }
-  #tmc-app .tmc-gradient {
-    background: linear-gradient(110deg, #ffffff 10%, #7cc4ff 52%, #c49bff 95%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  #tmc-app .tmc-subtitle {
-    max-width: 620px;
-    margin: 0 auto;
-    font-size: clamp(16px, 2vw, 19px);
-    color: var(--muted);
-    letter-spacing: -0.015em;
-    line-height: 1.6;
-  }
-  #tmc-app .tmc-actions {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 32px;
-  }
-  #tmc-app .tmc-primary, #tmc-app .tmc-secondary {
-    padding: 13px 22px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  #tmc-app .tmc-primary {
-    background: #fff;
-    color: #050507;
-    border: 1px solid #fff;
-  }
-  #tmc-app .tmc-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,255,255,0.18); }
-  #tmc-app .tmc-secondary {
-    color: #fff;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.04);
-  }
-  #tmc-app .tmc-secondary:hover { background: rgba(255, 255, 255, 0.09); border-color: rgba(255,255,255,0.22); }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--navy-950);
+            color: var(--text-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
 
-  /* SEARCH & FILTERS */
-  #tmc-app .tmc-discover {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 24px 56px;
-  }
-  #tmc-app .tmc-search-shell {
-    max-width: 680px;
-    margin: 0 auto 22px;
-    padding: 4px 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    backdrop-filter: blur(20px);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-  #tmc-app .tmc-search-shell:focus-within {
-    border-color: rgba(41, 151, 255, 0.55);
-    box-shadow: 0 0 0 4px rgba(41, 151, 255, 0.12);
-  }
-  #tmc-app .tmc-search-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  #tmc-app .tmc-search-icon {
-    color: var(--muted);
-    font-size: 18px;
-    user-select: none;
-  }
-  #tmc-app .search-input {
-    width: 100%;
-    border: 0 !important;
-    outline: 0 !important;
-    background: transparent !important;
-    color: #fff !important;
-    padding: 13px 4px !important;
-    font: 500 15px 'Inter', sans-serif !important;
-    box-shadow: none !important;
-  }
-  #tmc-app .search-input::placeholder { color: #6e6e77; }
-  #tmc-app .filter-pills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-  #tmc-app .filter-btn {
-    appearance: none;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.03);
-    color: var(--muted);
-    padding: 8px 15px;
-    border-radius: 999px;
-    cursor: pointer;
-    font: 600 12.5px 'Inter', sans-serif;
-    transition: all 0.2s ease;
-  }
-  #tmc-app .filter-btn:hover {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-  #tmc-app .filter-btn.active {
-    background: #fff;
-    color: #050507;
-    border-color: #fff;
-  }
+        a {
+            color: var(--gold-400);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover { color: var(--gold-200); }
 
-  /* FORMULA LIBRARY */
-  #tmc-app main {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 24px 100px;
-  }
-  #tmc-app .module-group {
-    padding: 48px 0 24px;
-    border-top: 1px solid var(--line);
-    scroll-margin-top: 84px;
-  }
-  #tmc-app .module-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  #tmc-app .module-header h2 {
-    margin: 0;
-    color: #fff;
-    font-size: clamp(22px, 2.8vw, 32px);
-    line-height: 1.15;
-    letter-spacing: -0.035em;
-    font-weight: 700;
-  }
-  #tmc-app .pill-count {
-    color: #b4b4bd;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--line);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
+        img { max-width: 100%; display: block; }
 
-  /* 2-COLUMN GRID FOR BETTER EQUATION READABILITY */
-  #tmc-app .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-  #tmc-app .formula-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 24px;
-    border-radius: 20px;
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.018) 100%);
-    border: 1px solid var(--line);
-    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-  }
-  #tmc-app .formula-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--line-hover);
-    background: linear-gradient(160deg, rgba(41, 151, 255, 0.09) 0%, rgba(255, 255, 255, 0.025) 100%);
-  }
-  #tmc-app .formula-card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-  #tmc-app .formula-card h3 {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0;
-    line-height: 1.3;
-  }
-  #tmc-app .formula-desc {
-    color: var(--muted);
-    font-size: 13.5px;
-    line-height: 1.55;
-    margin: 0;
-  }
-  #tmc-app .badge-level {
-    flex-shrink: 0;
-    background: rgba(41, 151, 255, 0.12);
-    color: #8ecaff;
-    border: 1px solid rgba(41, 151, 255, 0.24);
-    border-radius: 999px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-  }
-  #tmc-app .badge-hard {
-    color: #ffb0a1;
-    background: rgba(255, 95, 75, 0.12);
-    border-color: rgba(255, 110, 90, 0.25);
-  }
-  #tmc-app .math-display-box {
-    margin: 20px 0;
-    padding: 20px 16px;
-    min-height: 86px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #09090c;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 14px;
-    color: #fff;
-    font-size: 1.05em;
-    overflow-x: auto;
-  }
-  #tmc-app .math-display-box .katex-display {
-    margin: 0 !important;
-  }
-  #tmc-app .formula-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-    color: #868690;
-    font-size: 12px;
-    font-family: 'DM Mono', monospace;
-  }
-  #tmc-app .copy-btn {
-    background: rgba(255, 255, 255, 0.04);
-    color: #d1d1d6;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-size: 11.5px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  #tmc-app .copy-btn:hover {
-    background: #fff;
-    color: #050507;
-    border-color: #fff;
-  }
-  #tmc-app .copy-btn.copied {
-    background: #22c55e;
-    color: #050507;
-    border-color: #22c55e;
-  }
+        .container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
 
-  /* EMPTY STATE */
-  #noResults {
-    display: none;
-    text-align: center;
-    padding: 64px 20px;
-    color: var(--muted);
-    font-size: 15px;
-  }
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 11, 26, 0.82);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
 
-  /* FOOTER */
-  #tmc-app .tmc-footer {
-    border-top: 1px solid var(--line);
-    padding: 44px 24px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  #tmc-app .tmc-footer strong { color: #fff; }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
 
-  @media (max-width: 820px) {
-    #tmc-app .cards-grid { grid-template-columns: 1fr; }
-    #tmc-app .tmc-nav-links { display: none; }
-  }
-  @media (max-width: 600px) {
-    #tmc-app .tmc-nav { padding: 0 16px; }
-    #tmc-app .tmc-nav-cta { display: none; }
-    #tmc-app .tmc-hero { padding: 68px 16px 48px; }
-    #tmc-app .module-header { align-items: flex-start; flex-direction: column; gap: 8px; }
-    #tmc-app main, #tmc-app .tmc-discover { padding-left: 16px; padding-right: 16px; }
-  }
-  ]]></b:skin>
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text-primary);
+        }
+        .nav-brand i {
+            color: var(--gold-500);
+            font-size: 1.5rem;
+        }
+        .nav-brand span.accent { color: var(--gold-400); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            position: relative;
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: var(--gold-500);
+            transition: width 0.25s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .hero {
+            position: relative;
+            padding: 96px 0 104px;
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(7, 11, 26, 0.82) 0%,
+                    rgba(7, 11, 26, 0.92) 100%
+                ),
+                url("https://stockcake.com/i/mathematical-geometric-art_4777285_2026270") center / cover no-repeat;
+            /* Fallback pattern if the external image fails */
+            background-color: var(--navy-900);
+            border-bottom: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 55%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 780px;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            color: var(--gold-400);
+            margin-bottom: 24px;
+        }
+        .hero-kicker i { font-size: 0.85rem; }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 4.4rem);
+            font-weight: 600;
+            line-height: 1.08;
+            letter-spacing: -1px;
+            margin-bottom: 22px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold-400);
+        }
+
+        .hero-lede {
+            font-size: 1.12rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-meta i {
+            color: var(--gold-500);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================================
+           SECTION SHELL
+           ============================================================ */
+        .section {
+            padding: 88px 0;
+        }
+        .section--alt {
+            background: var(--navy-900);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-header {
+            max-width: 640px;
+            margin-bottom: 56px;
+        }
+        .section-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-500);
+            margin-bottom: 14px;
+        }
+        .section-eyebrow i { font-size: 0.7rem; }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 560px;
+        }
+
+        /* ============================================================
+           TIMELINE
+           ============================================================ */
+        .timeline {
+            position: relative;
+            display: grid;
+            gap: 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 22px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                var(--gold-500) 0%,
+                var(--border-medium) 60%,
+                transparent 100%
+            );
+            opacity: 0.5;
+        }
+
+        .timeline-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 46px 1fr;
+            gap: 28px;
+            padding: 0 0 44px 0;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-dot {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--navy-800);
+            border: 1px solid var(--border-medium);
+            color: var(--gold-400);
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 0 6px var(--navy-950);
+        }
+        .timeline-item--alt .timeline-dot { box-shadow: 0 0 0 6px var(--navy-900); }
+
+        .timeline-body {
+            background: var(--navy-800);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px 28px;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+        .timeline-body:hover {
+            border-color: var(--border-medium);
+            transform: translateX(4px);
+        }
+        .timeline-body h3 {
+            font-family: var(--font-display);
+            font-size: 1.18rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .timeline-era {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--gold-500);
+            margin-bottom: 10px;
+        }
+        .timeline-body p {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           MATHEMATICIAN OF THE MONTH
+           ============================================================ */
+        .motm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        .motm-portrait {
+            position: relative;
+        }
+        .motm-portrait-frame {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-medium);
+            background: var(--navy-800);
+            box-shadow: var(--shadow-card);
+        }
+        .motm-portrait-frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                transparent 60%,
+                rgba(7, 11, 26, 0.55) 100%
+            );
+            pointer-events: none;
+        }
+        .motm-portrait-frame img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            object-position: top center;
+            filter: sepia(0.15) contrast(1.05);
+        }
+
+        .motm-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(7, 11, 26, 0.78);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-medium);
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold-300);
+        }
+        .motm-badge i { font-size: 0.8rem; }
+
+        .motm-name {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.9rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+        .motm-lifespan {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            color: var(--gold-500);
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .motm-summary {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+        .motm-summary strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .motm-highlights {
+            display: grid;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+        .motm-highlights li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.65;
+        }
+        .motm-highlights li i {
+            color: var(--gold-500);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .motm-quote {
+            border-left: 2px solid var(--gold-500);
+            padding: 6px 0 6px 22px;
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.08rem;
+            color: var(--gold-200);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           GALLERY OF GREAT MATHEMATICIANS
+           ============================================================ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-card {
+            background: var(--navy-800);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color 0.25s, transform 0.25s;
+            text-align: center;
+        }
+        .gallery-card:hover {
+            border-color: var(--border-medium);
+            transform: translateY(-4px);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: top center;
+            filter: grayscale(0.35) sepia(0.1);
+            transition: filter 0.3s;
+        }
+        .gallery-card:hover img {
+            filter: grayscale(0) sepia(0.05);
+        }
+
+        .gallery-card-body {
+            padding: 18px 16px 22px;
+        }
+        .gallery-card-body h4 {
+            font-family: var(--font-display);
+            font-size: 1.02rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .gallery-card-body span {
+            font-size: 0.78rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--gold-500);
+            font-weight: 500;
+        }
+        .gallery-card-body p {
+            margin-top: 10px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 44px 0 36px;
+            background: var(--navy-950);
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .footer-brand i { color: var(--gold-500); }
+        .footer-note {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        .footer-note a { color: var(--gold-400); }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 900px) {
+            .motm-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .motm-portrait-frame img {
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links { display: none; }
+            .hero { padding: 72px 0 80px; }
+            .section { padding: 64px 0; }
+            .timeline-item {
+                grid-template-columns: 36px 1fr;
+                gap: 18px;
+            }
+            .timeline-dot {
+                width: 36px;
+                height: 36px;
+                font-size: 0.8rem;
+            }
+            .timeline::before { left: 17px; }
+            .timeline-body { padding: 20px 22px; }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 16px;
+            }
+            .gallery-card img { height: 170px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 18px; }
+            .hero-meta { flex-direction: column; gap: 10px; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-card img { height: 150px; }
+        }
+    </style>
 </head>
 <body>
 
-<div id='tmc-app'>
-  <div class='tmc-nav-wrap'>
-    <nav class='tmc-nav'>
-      <a class='tmc-brand' href='#'>
-        <span class='tmc-logo'>&#8721;</span>
-        <span>The Math Cheatsheet</span>
-      </a>
-      <div class='tmc-nav-links'>
-        <a href='#calculus'>Calculus</a>
-        <a href='#multivariable'>Multivariable</a>
-        <a href='#linear-algebra'>Linear Algebra</a>
-        <a href='#analysis'>Analysis</a>
-      </div>
-      <a class='tmc-nav-cta' href='#formula-library'>Explore formulas</a>
+    <!-- ============================================================
+         NAVIGATION
+         ============================================================ -->
+    <nav class="site-nav">
+        <div class="container nav-inner">
+            <a href="#" class="nav-brand">
+                <i class="fa-solid fa-square-root-variable"></i>
+                <span>math<span class="accent">-</span>cheatsheet</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#legend">Legend of the Month</a></li>
+                <li><a href="#gallery">Great Minds</a></li>
+            </ul>
+        </div>
     </nav>
-  </div>
 
-  <section class='tmc-hero'>
-    <div class='tmc-orb one'/><div class='tmc-orb two'/>
-    <div class='tmc-hero-inner'>
-      <div class='tmc-eyebrow'><span class='tmc-dot'/> Mathematics &#183; Clearly organized</div>
-      <h1>Understand the<br/><span class='tmc-gradient'>language of mathematics.</span></h1>
-      <p class='tmc-subtitle'>A curated collection of essential formulas, theorems, and mathematical ideas &#8212; from foundations to advanced university mathematics.</p>
-      <div class='tmc-actions'>
-        <a class='tmc-primary' href='#formula-library'>Explore the library &#8595;</a>
-        <a class='tmc-secondary' href='#calculus'>Start with calculus</a>
-      </div>
-    </div>
-  </section>
-
-  <section class='tmc-discover'>
-    <div class='tmc-search-shell'>
-      <div class='tmc-search-row'>
-        <span class='tmc-search-icon'>&#8981;</span>
-        <input class='search-input' id='mathSearch' oninput='filterMathCards()' placeholder='Search formulas, theorems, and concepts…' type='text'/>
-      </div>
-    </div>
-    <div class='filter-pills'>
-      <button class='filter-btn active' onclick='setCategory(&apos;all&apos;, this)'>All mathematics</button>
-      <button class='filter-btn' onclick='setCategory(&apos;calc&apos;, this)'>Calculus</button>
-      <button class='filter-btn' onclick='setCategory(&apos;multi&apos;, this)'>Multivariable</button>
-      <button class='filter-btn' onclick='setCategory(&apos;linear&apos;, this)'>Linear algebra</button>
-      <button class='filter-btn' onclick='setCategory(&apos;ode&apos;, this)'>Differential equations</button>
-      <button class='filter-btn' onclick='setCategory(&apos;analysis&apos;, this)'>Analysis</button>
-      <button class='filter-btn' onclick='setCategory(&apos;prob&apos;, this)'>Probability</button>
-    </div>
-  </section>
-
-  <div id='formula-library'>
-    <main>
-
-      <!-- Pillar 1: Single-Variable Calculus & Foundations -->
-      <div class='module-group' data-category='calc' id='calculus'>
-        <div class='module-header'>
-          <h2>Single-Variable Calculus &amp; Series</h2>
-          <span class='pill-count'>Core Curriculum</span>
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-kicker">
+                <i class="fa-solid fa-infinity"></i>
+                A living history of mathematics
+            </div>
+            <h1>
+                The ideas that <em>built</em><br />
+                the modern world.
+            </h1>
+            <p class="hero-lede">
+                From Babylonian clay tablets to the blackboards of Göttingen —
+                mathematics is humanity's longest-running conversation.
+                This is your cheat sheet to its greatest hits.
+            </p>
+            <div class="hero-meta">
+                <span><i class="fa-regular fa-clock"></i> 4,000+ years of thought</span>
+                <span><i class="fa-solid fa-user-astronaut"></i> 20+ legendary minds</span>
+                <span><i class="fa-solid fa-bolt"></i> Updated monthly</span>
+            </div>
         </div>
-        <div class='cards-grid'>
+    </header>
 
-          <div class='formula-card' data-category='calc'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Fundamental Theorem of Calculus</h3>
-                <span class='badge-level'>High School / AP</span>
-              </div>
-              <p class='formula-desc'>Connects differentiation and integration as inverse linear operators.</p>
-              <div class='math-display-box'>
-                $$\frac{d}{dx}\int_{a}^{x} f(t)\,dt = f(x), \quad \int_{a}^{b} f&#39;(x)\,dx = f(b) - f(a)$$
-              </div>
+    <!-- ============================================================
+         TIMELINE
+         ============================================================ -->
+    <section class="section" id="timeline">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">
+                    <i class="fa-solid fa-timeline"></i>
+                    A brief history
+                </div>
+                <h2 class="section-title">How mathematics grew up</h2>
+                <p class="section-sub">
+                    Six eras that reshaped what it means to count, measure, and prove.
+                </p>
             </div>
-            <div class='formula-footer'>
-              <span>Calculus I</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\frac{d}{dx}\\int_{a}^{x} f(t)\\,dt = f(x)&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
 
-          <div class='formula-card' data-category='calc'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Taylor &amp; Maclaurin Series</h3>
-                <span class='badge-level'>Calculus II</span>
-              </div>
-              <p class='formula-desc'>Infinite power series expansion of infinitely differentiable function $f(x)$ about $x=a$.</p>
-              <div class='math-display-box'>
-                $$f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n + R_n(x)$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Power Series</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x-a)^n&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
+            <div class="timeline">
+                <!-- 1 -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-seedling"></i></div>
+                    <div class="timeline-body">
+                        <div class="timeline-era">c. 3000 – 500 BCE</div>
+                        <h3>Ancient Civilisations</h3>
+                        <p>
+                            Babylonian base-60 arithmetic, Egyptian geometry for
+                            surveying the Nile, and the earliest place-value
+                            systems. Mathematics was practical — but the seeds
+                            of abstraction were already being planted.
+                        </p>
+                    </div>
+                </article>
 
-          <div class='formula-card' data-category='calc'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Euler&#39;s Formula &amp; Identity</h3>
-                <span class='badge-level'>Complex &amp; Trig</span>
-              </div>
-              <p class='formula-desc'>The bridge between complex analysis, circular trigonometry, and exponential growth.</p>
-              <div class='math-display-box'>
-                $$e^{i\theta} = \cos\theta + i\sin\theta \implies e^{i\pi} + 1 = 0$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Leonhard Euler (1748)</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;e^{i\\theta} = \\cos\\theta + i\\sin\\theta&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
+                <!-- 2 -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-scroll"></i></div>
+                    <div class="timeline-body">
+                        <div class="timeline-era">c. 600 BCE – 300 CE</div>
+                        <h3>Greek Deduction</h3>
+                        <p>
+                            Euclid's <em>Elements</em> turned mathematics into a
+                            deductive science. Archimedes pushed toward calculus,
+                            and the Pythagoreans discovered that not everything
+                            could be expressed as a ratio of whole numbers.
+                        </p>
+                    </div>
+                </article>
 
-          <div class='formula-card' data-category='calc'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Integration by Parts</h3>
-                <span class='badge-level'>Integration</span>
-              </div>
-              <p class='formula-desc'>Derived from the product rule of differentiation for continuous functions $u(x)$ and $v(x)$.</p>
-              <div class='math-display-box'>
-                $$\int u\,dv = uv - \int v\,du$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Analytic Methods</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\int u\\,dv = uv - \\int v\\,du&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
+                <!-- 3 -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="timeline-body">
+                        <div class="timeline-era">c. 500 – 1400 CE</div>
+                        <h3>The Islamic Golden Age & Medieval Europe</h3>
+                        <p>
+                            Algebra (al-jabr), the Hindu–Arabic numeral system,
+                            and the first systematic treatments of equations.
+                            Knowledge flowed across Baghdad, Córdoba, and
+                            eventually the universities of Europe.
+                        </p>
+                    </div>
+                </article>
 
+                <!-- 4 -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-calculator"></i></div>
+                    <div class="timeline-body">
+                        <div class="timeline-era">17th Century</div>
+                        <h3>The Rise of Calculus</h3>
+                        <p>
+                            Newton and Leibniz independently invented calculus,
+                            giving humanity a language for change. Analytic
+                            geometry (Descartes) married algebra to curves, and
+                            the Scientific Revolution found its mathematical
+                            engine.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 5 -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="timeline-body">
+                        <div class="timeline-era">19th Century</div>
+                        <h3>The Birth of Rigor</h3>
+                        <p>
+                            Cauchy, Weierstrass, and Riemann put analysis on a
+                            firm logical footing. Non-Euclidean geometry
+                            shattered old certainties, and abstract algebra
+                            began to emerge as a field of its own.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 6 -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="timeline-body">
+                        <div class="timeline-era">20th Century – Today</div>
+                        <h3>The Modern Era</h3>
+                        <p>
+                            Hilbert's program, Gödel's incompleteness theorems,
+                            the Bourbaki collective, and the rise of computation.
+                            Mathematics now underpins cryptography, physics,
+                            machine learning, and the search for a unified
+                            theory of everything.
+                        </p>
+                    </div>
+                </article>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Pillar 2: Multivariable & Vector Calculus -->
-      <div class='module-group' data-category='multi' id='multivariable'>
-        <div class='module-header'>
-          <h2>Multivariable &amp; Vector Calculus</h2>
-          <span class='pill-count'>University Honors</span>
+    <!-- ============================================================
+         MATHEMATICIAN OF THE MONTH — GAUSS
+         ============================================================ -->
+    <section class="section section--alt" id="legend">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">
+                    <i class="fa-solid fa-crown"></i>
+                    Mathematician of the Month
+                </div>
+                <h2 class="section-title">The Prince of Mathematicians</h2>
+                <p class="section-sub">
+                    A child prodigy who became the most influential mathematician
+                    of the 19th century — and still shapes how we teach, measure,
+                    and prove today.
+                </p>
+            </div>
+
+            <div class="motm-grid">
+                <!-- Portrait -->
+                <div class="motm-portrait">
+                    <div class="motm-portrait-frame">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Carl_Friedrich_Gauss.jpg"
+                            alt="Portrait of Carl Friedrich Gauss by Christian Albrecht Jensen"
+                            loading="lazy"
+                        />
+                    </div>
+                    <span class="motm-badge">
+                        <i class="fa-solid fa-star"></i> April 2025
+                    </span>
+                </div>
+
+                <!-- Details -->
+                <div class="motm-details">
+                    <h3 class="motm-name">Carl Friedrich Gauss</h3>
+                    <div class="motm-lifespan">1777 – 1855 · Brunswick / Göttingen</div>
+
+                    <p class="motm-summary">
+                        Johann Carl Friedrich Gauss was a German polymath whose
+                        work spanned number theory, algebra, analysis, geometry,
+                        statistics, astronomy, and magnetism. Known as the
+                        <strong>“Prince of Mathematicians,”</strong> he was
+                        famously reluctant to publish incomplete results —
+                        leaving a treasure trove of ideas for later generations
+                        to rediscover.
+                    </p>
+
+                    <ul class="motm-highlights">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Proved the construction of the regular
+                            <strong>heptadecagon</strong> (17-sided polygon)
+                            using only compass and straightedge — the first
+                            advance in regular polygon construction in over
+                            2,000 years.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Introduced the triple-bar symbol
+                            (<strong>≡</strong>) for congruence and wrote
+                            <em>Disquisitiones Arithmeticae</em>, a foundational
+                            text in number theory.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Developed the <strong>method of least squares</strong>
+                            and the <strong>normal (Gaussian) distribution</strong>,
+                            now indispensable in statistics and machine learning.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Pioneered <strong>non-Euclidean geometry</strong>,
+                            <strong>Gaussian curvature</strong>, and the
+                            <strong>Theorema Egregium</strong> — reshaping
+                            differential geometry.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            More than <strong>100 mathematical and scientific
+                            concepts</strong> are named after him, from Gaussian
+                            elimination to the Gauss gravitational constant.
+                        </li>
+                    </ul>
+
+                    <blockquote class="motm-quote">
+                        “Mathematics is the queen of the sciences, and number
+                        theory is the queen of mathematics.”
+                    </blockquote>
+                </div>
+            </div>
         </div>
-        <div class='cards-grid'>
+    </section>
 
-          <div class='formula-card' data-category='multi'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Generalized Stokes&#39; Theorem</h3>
-                <span class='badge-level badge-hard'>Advanced</span>
-              </div>
-              <p class='formula-desc'>Integrates differential $(k-1)$-form $\omega$ over the boundary $\partial \Omega$ of manifold $\Omega$.</p>
-              <div class='math-display-box'>
-                $$\int_{\partial \Omega} \omega = \int_{\Omega} d\omega$$
-              </div>
+    <!-- ============================================================
+         GALLERY OF GREAT MATHEMATICIANS
+         ============================================================ -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">
+                    <i class="fa-solid fa-users"></i>
+                    The pantheon
+                </div>
+                <h2 class="section-title">Other giants of the craft</h2>
+                <p class="section-sub">
+                    A quick visual roll-call of minds who changed the rules.
+                </p>
             </div>
-            <div class='formula-footer'>
-              <span>Differential Forms</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\int_{\\partial \\Omega} \\omega = \\int_{\\Omega} d\\omega&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
 
-          <div class='formula-card' data-category='multi'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Classical Stokes&#39; &amp; Curl</h3>
-                <span class='badge-level'>Vector Analysis</span>
-              </div>
-              <p class='formula-desc'>Relates the line integral of vector field $\mathbf{F}$ around loop $\partial \Sigma$ to surface flux of curl.</p>
-              <div class='math-display-box'>
-                $$\oint_{\partial \Sigma} \mathbf{F} \cdot d\mathbf{r} = \iint_{\Sigma} (\nabla \times \mathbf{F}) \cdot d\mathbf{S}$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Surface Circulation</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\oint_{\\partial \\Sigma} \\mathbf{F} \\cdot d\\mathbf{r} = \\iint_{\\Sigma} (\\nabla \\times \\mathbf{F}) \\cdot d\\mathbf{S}&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
+            <div class="gallery-grid">
+                <!-- Euclid -->
+                <div class="gallery-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Euklid.jpg"
+                        alt="Portrait of Euclid"
+                        loading="lazy"
+                    />
+                    <div class="gallery-card-body">
+                        <h4>Euclid</h4>
+                        <span>c. 300 BCE</span>
+                        <p>Father of geometry; his <em>Elements</em> remained
+                        a standard textbook for over 2,000 years.</p>
+                    </div>
+                </div>
 
-          <div class='formula-card' data-category='multi'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Gauss&#39;s Divergence Theorem</h3>
-                <span class='badge-level'>Vector Analysis</span>
-              </div>
-              <p class='formula-desc'>Total outward flux of field $\mathbf{F}$ through closed surface equals volume integral of divergence.</p>
-              <div class='math-display-box'>
-                $$\oiint_{\partial V} \mathbf{F} \cdot d\mathbf{S} = \iiint_{V} (\nabla \cdot \mathbf{F})\,dV$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Flux Conservation</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\oiint_{\\partial V} \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_{V} (\\nabla \\cdot \\mathbf{F})\\,dV&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
+                <!-- Newton -->
+                <div class="gallery-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Portrait_of_Sir_Isaac_Newton,_1689.jpg"
+                        alt="Portrait of Isaac Newton"
+                        loading="lazy"
+                    />
+                    <div class="gallery-card-body">
+                        <h4>Isaac Newton</h4>
+                        <span>1642 – 1727</span>
+                        <p>Co-inventor of calculus, formulated the laws of
+                        motion and universal gravitation.</p>
+                    </div>
+                </div>
 
-          <div class='formula-card' data-category='multi'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Hessian Matrix &amp; Extrema</h3>
-                <span class='badge-level'>Optimization</span>
-              </div>
-              <p class='formula-desc'>Square matrix of second-order partial derivatives. Eigenvalues determine local curvature.</p>
-              <div class='math-display-box'>
-                $$\mathbf{H}(f) = \begin{bmatrix} \frac{\partial^2 f}{\partial x_1^2} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_1 \partial x_n} \\ \vdots &amp; \ddots &amp; \vdots \\ \frac{\partial^2 f}{\partial x_n \partial x_1} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_n^2} \end{bmatrix}$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>$\mathbf{H} \succ 0 \implies$ Local Min</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\mathbf{H}_{ij} = \\frac{\\partial^2 f}{\\partial x_i \\partial x_j}&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
+                <!-- Euler -->
+                <div class="gallery-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Leonhard_Euler.jpg"
+                        alt="Portrait of Leonhard Euler"
+                        loading="lazy"
+                    />
+                    <div class="gallery-card-body">
+                        <h4>Leonhard Euler</h4>
+                        <span>1707 – 1783</span>
+                        <p>The most prolific mathematician in history;
+                        introduced much of modern notation.</p>
+                    </div>
+                </div>
 
+                <!-- Riemann -->
+                <div class="gallery-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/8/82/Georg_Friedrich_Bernhard_Riemann.jpeg"
+                        alt="Portrait of Bernhard Riemann"
+                        loading="lazy"
+                    />
+                    <div class="gallery-card-body">
+                        <h4>Bernhard Riemann</h4>
+                        <span>1826 – 1866</span>
+                        <p>Founder of Riemannian geometry; his zeta function
+                        remains central to the deepest open problem in maths.</p>
+                    </div>
+                </div>
+
+                <!-- Hilbert -->
+                <div class="gallery-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/9/9b/David_Hilbert_1902.jpg"
+                        alt="Portrait of David Hilbert"
+                        loading="lazy"
+                    />
+                    <div class="gallery-card-body">
+                        <h4>David Hilbert</h4>
+                        <span>1862 – 1943</span>
+                        <p>Set the agenda for 20th-century mathematics with his
+                        23 problems.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Pillar 3: Linear Algebra & Decompositions -->
-      <div class='module-group' data-category='linear' id='linear-algebra'>
-        <div class='module-header'>
-          <h2>Linear Algebra &amp; Matrix Decompositions</h2>
-          <span class='pill-count'>Foundations of AI &amp; Quantum</span>
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <i class="fa-solid fa-square-root-variable"></i>
+                math-cheatsheet
+            </div>
+            <div class="footer-note">
+                Built for curious minds. Portrait of Gauss via
+                <a href="https://commons.wikimedia.org/wiki/File:Carl_Friedrich_Gauss.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>.
+                Icons by Font Awesome.
+            </div>
         </div>
-        <div class='cards-grid'>
-
-          <div class='formula-card' data-category='linear'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Singular Value Decomposition (SVD)</h3>
-                <span class='badge-level badge-hard'>Advanced</span>
-              </div>
-              <p class='formula-desc'>Factorizes any real $m \times n$ matrix $\mathbf{A}$ into orthogonal bases and singular values.</p>
-              <div class='math-display-box'>
-                $$\mathbf{A} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T = \sum_{i=1}^{r} \sigma_i \mathbf{u}_i \mathbf{v}_i^T$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Spectral Geometry</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\mathbf{A} = \\mathbf{U} \\mathbf{\\Sigma} \\mathbf{V}^T&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='linear'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Characteristic Equation &amp; Eigen</h3>
-                <span class='badge-level'>Linear Algebra</span>
-              </div>
-              <p class='formula-desc'>Determines the spectrum $\lambda$ and invariant directions $\mathbf{v}$ of a linear operator.</p>
-              <div class='math-display-box'>
-                $$\det(\mathbf{A} - \lambda \mathbf{I}) = 0 \iff \mathbf{A}\mathbf{v} = \lambda \mathbf{v}$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Cayley-Hamilton: $p(\mathbf{A}) = \mathbf{0}$</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\det(\\mathbf{A} - \\lambda \\mathbf{I}) = 0&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='linear'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Rank-Nullity Theorem</h3>
-                <span class='badge-level'>Vector Spaces</span>
-              </div>
-              <p class='formula-desc'>Relates kernel and image dimensions for any linear transformation $T: V \to W$.</p>
-              <div class='math-display-box'>
-                $$\dim(\ker T) + \dim(\operatorname{im} T) = \dim(V)$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>$\operatorname{nullity}(T) + \operatorname{rank}(T) = n$</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\dim(\\ker T) + \\dim(\\operatorname{im} T) = \\dim(V)&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='linear'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Spectral Theorem (Hermitian)</h3>
-                <span class='badge-level badge-hard'>Advanced</span>
-              </div>
-              <p class='formula-desc'>Every symmetric/Hermitian matrix is orthogonally diagonalizable with real eigenvalues.</p>
-              <div class='math-display-box'>
-                $$\mathbf{A} = \mathbf{Q} \mathbf{\Lambda} \mathbf{Q}^T, \quad \mathbf{Q}^T \mathbf{Q} = \mathbf{I}, \quad \lambda_i \in \mathbb{R}$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Self-Adjoint Operators</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\mathbf{A} = \\mathbf{Q} \\mathbf{\\Lambda} \\mathbf{Q}^T&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Pillar 4: Differential Equations -->
-      <div class='module-group' data-category='ode' id='differential-eq'>
-        <div class='module-header'>
-          <h2>Ordinary &amp; Partial Differential Equations</h2>
-          <span class='pill-count'>Dynamical Systems</span>
-        </div>
-        <div class='cards-grid'>
-
-          <div class='formula-card' data-category='ode'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>First-Order Integrating Factor</h3>
-                <span class='badge-level'>ODEs</span>
-              </div>
-              <p class='formula-desc'>Analytic closed-form solution to non-homogeneous linear differential equations.</p>
-              <div class='math-display-box'>
-                $$y&#39; + P(x)y = Q(x) \implies y = \frac{1}{\mu} \int \mu Q\,dx, \quad \mu = e^{\int P\,dx}$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Exact Solutions</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\mu(x) = \\exp(\\int P(x)\\,dx)&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='ode'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>The Canonical Heat Equation</h3>
-                <span class='badge-level badge-hard'>PDEs</span>
-              </div>
-              <p class='formula-desc'>Parabolic partial differential equation governing thermal diffusion and Brownian motion.</p>
-              <div class='math-display-box'>
-                $$\frac{\partial u}{\partial t} = \alpha \nabla^2 u = \alpha \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right)$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Gaussian Kernel</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\frac{\\partial u}{\\partial t} = \\alpha \\nabla^2 u&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='ode'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>The Wave Equation &amp; d&#39;Alembert</h3>
-                <span class='badge-level badge-hard'>PDEs</span>
-              </div>
-              <p class='formula-desc'>Hyperbolic PDE for acoustics, electromagnetism, and gravitational waves.</p>
-              <div class='math-display-box'>
-                $$\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2} \implies u(x,t) = \phi(x-ct) + \psi(x+ct)$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Hyperbolic Systems</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\nabla^2 u&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='ode'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Laplace Transform Definition</h3>
-                <span class='badge-level'>Transforms</span>
-              </div>
-              <p class='formula-desc'>Converts linear differential operators into algebraic equations in complex $s$-space.</p>
-              <div class='math-display-box'>
-                $$\mathcal{L}\{f(t)\}(s) = F(s) = \int_{0}^{\infty} e^{-st} f(t)\,dt$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>$\mathcal{L}\{f&#39;\} = sF(s) - f(0)$</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\mathcal{L}\\{f(t)\\} = \\int_0^\\infty e^{-st} f(t)\\,dt&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Pillar 5: Real & Complex Analysis -->
-      <div class='module-group' data-category='analysis' id='analysis'>
-        <div class='module-header'>
-          <h2>Complex &amp; Real Analysis</h2>
-          <span class='pill-count'>Pure Mathematics</span>
-        </div>
-        <div class='cards-grid'>
-
-          <div class='formula-card' data-category='analysis'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Cauchy-Riemann Equations</h3>
-                <span class='badge-level badge-hard'>Complex Analysis</span>
-              </div>
-              <p class='formula-desc'>Necessary and sufficient condition for complex differentiability (holomorphicity) of $f(z) = u + iv$.</p>
-              <div class='math-display-box'>
-                $$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \text{and} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Conformal Mapping</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;u_x = v_y, \\quad u_y = -v_x&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='analysis'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Cauchy&#39;s Residue Theorem</h3>
-                <span class='badge-level badge-hard'>Advanced</span>
-              </div>
-              <p class='formula-desc'>Solves non-elementary real definite integrals by computing poles in the complex upper half-plane.</p>
-              <div class='math-display-box'>
-                $$\oint_{\gamma} f(z)\,dz = 2\pi i \sum_{k=1}^{n} \operatorname{Res}(f, z_k)$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Contour Integration</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\oint_\\gamma f(z)\\,dz = 2\\pi i \\sum \\operatorname{Res}(f, z_k)&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='analysis'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Formal $\epsilon$-$\delta$ Limit Definition</h3>
-                <span class='badge-level'>Real Analysis</span>
-              </div>
-              <p class='formula-desc'>Rigorous foundation of continuous calculus developed by Cauchy and Weierstrass.</p>
-              <div class='math-display-box'>
-                $$\forall \epsilon &gt; 0, \; \exists \delta &gt; 0 \; \text{s.t.} \; 0 &lt; |x - c| &lt; \delta \implies |f(x) - L| &lt; \epsilon$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Metric Topology</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;\\forall \\epsilon &gt; 0, \\exists \\delta &gt; 0 \\implies |f(x)-L| &lt; \\epsilon&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='analysis'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Cauchy Integral Formula</h3>
-                <span class='badge-level badge-hard'>Complex Analysis</span>
-              </div>
-              <p class='formula-desc'>Values of an analytic function inside a domain are completely determined by boundary values.</p>
-              <div class='math-display-box'>
-                $$f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_{\gamma} \frac{f(z)}{(z - z_0)^{n+1}}\,dz$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Holomorphic Rigidity</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;f(z_0) = \\frac{1}{2\\pi i} \\oint_\\gamma \\frac{f(z)}{z - z_0}\\,dz&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Pillar 6: Probability & Stochastic Calculus -->
-      <div class='module-group' data-category='prob' id='probability'>
-        <div class='module-header'>
-          <h2>Probability, Statistics &amp; Stochastics</h2>
-          <span class='pill-count'>Measure &amp; Data</span>
-        </div>
-        <div class='cards-grid'>
-
-          <div class='formula-card' data-category='prob'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Bayes&#39; Theorem</h3>
-                <span class='badge-level'>Inference</span>
-              </div>
-              <p class='formula-desc'>Updates the posterior probability of hypothesis $H$ given observed evidence $E$.</p>
-              <div class='math-display-box'>
-                $$P(H \mid E) = \frac{P(E \mid H)\,P(H)}{\sum_{i} P(E \mid H_i)\,P(H_i)}$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Bayesian Inference</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;P(H \\mid E) = \\frac{P(E \\mid H)P(H)}{P(E)}&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-          <div class='formula-card' data-category='prob'>
-            <div>
-              <div class='formula-card-top'>
-                <h3>Gaussian Probability Density</h3>
-                <span class='badge-level'>Distributions</span>
-              </div>
-              <p class='formula-desc'>Normal distribution parameterized by mean $\mu$ and variance $\sigma^2$.</p>
-              <div class='math-display-box'>
-                $$f(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$$
-              </div>
-            </div>
-            <div class='formula-footer'>
-              <span>Central Limit Theorem</span>
-              <button class='copy-btn' onclick='copyLatex(this, &apos;f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}&apos;)'>Copy LaTeX</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div id='noResults'>No matching formulas or theorems found. Try another search term.</div>
-    </main>
-  </div>
-
-  <footer class='tmc-footer'>
-    <strong>The Math Cheatsheet</strong> &#8212; Precision Mathematical Reference
-  </footer>
-</div>
-
-<!-- Required Blogger Section (hidden via CSS) -->
-<b:section class='hidden-section' id='main' showaddelement='no'/>
-
-<!-- KaTeX Scripts -->
-<script defer='defer' src='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js'/>
-<script defer='defer' onload='renderMathInElement(document.body, {delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}], throwOnError: false});' src='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js'/>
-
-<script type='text/javascript'>
-//<![CDATA[
-var currentCategory = 'all';
-
-function setCategory(cat, btn) {
-  currentCategory = cat;
-  var buttons = document.querySelectorAll('.filter-btn');
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove('active');
-  }
-  btn.classList.add('active');
-  filterMathCards();
-}
-
-function filterMathCards() {
-  var query = document.getElementById('mathSearch').value.toLowerCase().trim();
-  var groups = document.querySelectorAll('.module-group');
-  var totalVisible = 0;
-
-  for (var i = 0; i < groups.length; i++) {
-    var group = groups[i];
-    var groupCat = group.getAttribute('data-category');
-    var cards = group.querySelectorAll('.formula-card');
-    var groupVisible = 0;
-
-    if (currentCategory !== 'all' && groupCat !== currentCategory) {
-      group.style.display = 'none';
-      continue;
-    }
-
-    for (var j = 0; j < cards.length; j++) {
-      var card = cards[j];
-      var text = card.textContent.toLowerCase();
-      if (text.indexOf(query) !== -1) {
-        card.style.display = 'flex';
-        groupVisible++;
-        totalVisible++;
-      } else {
-        card.style.display = 'none';
-      }
-    }
-
-    group.style.display = groupVisible > 0 ? 'block' : 'none';
-  }
-
-  document.getElementById('noResults').style.display = totalVisible === 0 ? 'block' : 'none';
-}
-
-function copyLatex(btn, latexStr) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(latexStr).then(function() {
-      var orig = btn.textContent;
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(function() {
-        btn.textContent = orig;
-        btn.classList.remove('copied');
-      }, 1500);
-    });
-  }
-}
-//]]>
-</script>
+    </footer>
 
 </body>
 </html>
